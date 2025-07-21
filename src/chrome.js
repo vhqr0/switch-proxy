@@ -4,7 +4,8 @@ export async function getStorage(key) {
 }
 
 export async function setStorage(key, value) {
-  await chrome.storage.sync.set({ [key]: value });
+  const data = { [key]: value };
+  await chrome.storage.sync.set(data);
 }
 
 export async function getProxy() {
@@ -13,11 +14,13 @@ export async function getProxy() {
 }
 
 export async function setProxy(value) {
-  return await chrome.proxy.settings.set({ value, scope: "regular" });
+  const proxy = { value, scope: "regular" };
+  return await chrome.proxy.settings.set(proxy);
 }
 
 export async function setSystemProxy() {
-  return await setProxy({ mode: "system" });
+  const value = { mode: "system" };
+  return await setProxy(value);
 }
 
 export async function setProxyServer(url) {
@@ -30,8 +33,9 @@ export async function setProxyServer(url) {
   const port = parsed_url.port == "" ? null : parseInt(parsed_url.port);
   const server = { scheme, host };
   if (port) server.port = port;
-  return await setProxy({
+  const value = {
     mode: "fixed_servers",
     rules: { singleProxy: server },
-  });
+  };
+  return await setProxy(value);
 }

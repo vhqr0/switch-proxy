@@ -1,3 +1,65 @@
-.app {
-  text-align: center;
+#app {
+  width: 400px;
+}
+
+.proxy-content {
+  display: inline-block;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  border: 1px solid #ddd;
+}
+
+.proxy-item {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.add-proxy-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.button {
+  padding: 3px 6px;
+  border: none;
+  border-radius: 2px;
+  font-size: 8px;
+  font-weight: 300;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.switch-button {
+  background: #fed330;
+  color: #2f3542;
+}
+
+.delete-button {
+  background: #ff4757;
+}
+
+.save-button {
+  background: #20bf6b;
+}
+
+.input {
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
 }
