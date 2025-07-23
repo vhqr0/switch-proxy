@@ -18,12 +18,6 @@
   gap: 2px;
 }
 
-.add-proxy-content {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
 .button {
   padding: 3px 6px;
   border: none;
@@ -46,12 +40,12 @@
   background: #ff4757;
 }
 
-.save-button {
+.add-button {
   background: #20bf6b;
 }
 
 .input {
-  padding: 4px;
+  padding: 2px;
   border: 1px solid #ddd;
   border-radius: 3px;
   font-size: 10px;

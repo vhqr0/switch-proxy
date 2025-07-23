@@ -9,6 +9,7 @@ import {
 function App({ initProxy, initProxyList }) {
   const [proxy, setProxy] = useState(initProxy);
   const [proxyList, setProxyList] = useState(initProxyList);
+  const [inputProxy, setInputProxy] = useState("");
   const syncProxy = async () => {
     const newProxy = await getProxy();
     setProxy(newProxy);
@@ -30,11 +31,15 @@ function App({ initProxy, initProxyList }) {
       setProxyList(newProxyList);
     };
   };
-  const onSaveProxyServer = async () => {
-    const url = document.getElementById("proxy-input").value;
-    const newProxyList = proxyList.concat([url]);
+  const onInputProxyChange = (event) => {
+    setInputProxy(event.target.value);
+  };
+  const onInputProxySubmit = async (event) => {
+    event.preventDefault();
+    const newProxyList = proxyList.concat([inputProxy]);
     await setStorage("proxyList", newProxyList);
     setProxyList(newProxyList);
+    setInputProxy("");
   };
   return (
     <div className="app">
@@ -47,7 +52,10 @@ function App({ initProxy, initProxyList }) {
         <ul className="proxy-list-content">
           <li className="proxy-item system-proxy-item">
             system
-            <button className="button switch-button" onClick={onSwitchSystemProxy}>
+            <button
+              className="button switch-button"
+              onClick={onSwitchSystemProxy}
+            >
               Switch
             </button>
           </li>
@@ -68,16 +76,23 @@ function App({ initProxy, initProxyList }) {
               </button>
             </li>
           ))}
+          <li className="proxy-item proxy-input-item">
+            <form
+              className="form proxy-input-form"
+              onSubmit={onInputProxySubmit}
+            >
+              <input
+                className="input proxy-input"
+                type="text"
+                value={inputProxy}
+                onChange={onInputProxyChange}
+              />
+              <button className="button add-button" type="submit">
+                Add
+              </button>
+            </form>
+          </li>
         </ul>
-      </div>
-      <div className="add-proxy">
-        <h2 className="add-proxy-header">Add Proxy</h2>
-        <div className="add-proxy-content">
-          <input id="proxy-input" className="input proxy-input" type="text" />
-          <button className="button save-button" onClick={onSaveProxyServer}>
-            Save
-          </button>
-        </div>
       </div>
     </div>
   );
