@@ -41,7 +41,8 @@
 
 .proxy-content {
   background: #f8fafc;
-  padding: 8px;
+  /* 多行显示有问题，注释掉 */
+  /* padding: 8px; */
   border-radius: 6px;
   font-size: 12px;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
